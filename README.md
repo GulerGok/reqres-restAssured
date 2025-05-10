@@ -183,3 +183,22 @@ API Endpoint: /api/users?delay=3
 Testler:
 
 - Yanıt kodu 200 OK olmalıdır.
+
+
+# Kullanım #
+Projeyi çalıştırmak için aşağıdaki adımları izleyebilirsiniz:
+
+**Testleri Çalıştırma:** Maven veya IDE (IntelliJ IDEA, Eclipse) üzerinden TestNG testlerini çalıştırabilirsiniz.
+
+```bash
+mvn test
+```
+**Test Sonuçları:** Testler tamamlandığında, konsolda her bir testin sonucu ve yanıt süreleri görüntülenir.
+
+# Yapılabilecek Geliştirmeler #
+Daha fazla test eklenebilir: API'nin tüm uç noktaları için daha fazla test yazılabilir.
+
+**Veri doğrulama:** Yanıt içeriklerinin daha detaylı bir şekilde doğrulanması sağlanabilir.
+
+# Lisans #
+Bu proje MIT lisansı ile lisanslanmıştır. Daha fazla bilgi için LICENSE dosyasına bakabilirsiniz.
