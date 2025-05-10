@@ -1,68 +1,56 @@
-API Test Suite - Reqres API
-Bu proje, Reqres API'yi test etmek için yazılmış bir test senaryosu içermektedir. Testler, RestAssured ve TestNG kullanılarak gerçekleştirilmiştir.
+# API Test Suite - Reqres API
 
-İçindekiler
-Kurulum
+Bu proje, **Reqres API**'yi test etmek için yazılmış bir test senaryosu içermektedir. Testler, **RestAssured** ve **TestNG** kullanılarak gerçekleştirilmiştir.
 
-Testler
+## İçindekiler
 
-TC01_getAllUsers
+1. [Kurulum](#kurulum)
+2. [Testler](#testler)
 
-TC02_getUsersPage1
+    * [TC01\_getAllUsers](#tc01_getallusers)
+    * [TC02\_getUsersPage1](#tc02_getuserspage1)
+    * [TC03\_getUserById](#tc03_getuserbyid)
+    * [TC04\_register](#tc04_register)
+    * [TC05\_successfulLogin](#tc05_successfullogin)
+    * [TC06\_loginWithNoBody](#tc06_loginwithnobody)
+    * [TC07\_registerWithoutEmailOrPassword](#tc07_registerwithoutemailorpassword)
+    * [TC08\_loginWithInvalidEmail](#tc08_loginwithinvalidemail)
+    * [TC09\_loginWithInvalidPassword](#tc09_loginwithinvalidpassword)
+    * [TC10\_createUser](#tc10_createuser)
+    * [TC11\_updateUser](#tc11_updateuser)
+    * [TC12\_deleteUser](#tc12_deleteuser)
+    * [TC13\_delayedResponse](#tc13_delayedresponse)
+3. [Kullanım](#kullanım)
+4. [Yapılabilecek Geliştirmeler](#yapılabilecek-geliştirmeler)
 
-TC03_getUserById
+## Kurulum
 
-TC04_register
-
-TC05_successfulLogin
-
-TC06_loginWithNoBody
-
-TC07_registerWithoutEmailOrPassword
-
-TC08_loginWithInvalidEmail
-
-TC09_loginWithInvalidPassword
-
-TC10_createUser
-
-TC11_updateUser
-
-TC12_deleteUser
-
-TC13_delayedResponse
-
-Kullanım
-
-Yapılabilecek Geliştirmeler
-
-Kurulum
 Projeyi çalıştırmak için aşağıdaki adımları takip edebilirsiniz:
 
-Git ile Projeyi Klonla
+1. **Git ile Projeyi Klonla**
 
-bash
-Kopyala
-Düzenle
-git clone https://github.com/your-repository/reqres-api-tests.git
+   ```bash
+   git clone https://github.com/your-repository/reqres-api-tests.git
+   ```
+
 Maven ile Bağımlılıkları İndir
 Proje için gerekli bağımlılıkları yüklemek için Maven kullanabilirsiniz:
 
-bash
-Kopyala
-Düzenle
+```bash
 mvn clean install   
+```
+
 TestNG ile Testleri Çalıştır
 Testleri çalıştırmak için:
 
-bash
-Kopyala
-Düzenle
+```bash
 mvn test   
+```
+
 Bu komut, TestNG'nin sağladığı testng.xml dosyası üzerinden tüm testleri çalıştıracaktır.
 
 Testler
-TC01_getAllUsers
+TC01\_getAllUsers
 Tüm kullanıcıları almak için yapılan GET isteği testidir. Bu test, tüm kullanıcı adlarını toplar ve George kullanıcısının var olup olmadığını doğrular.
 
 API Endpoint: /api/users?page={page}
@@ -73,7 +61,7 @@ Toplam yanıt süresi 2000ms'den uzun olmamalıdır.
 
 Tüm kullanıcı adları arasında "George" bulunmalıdır.
 
-TC02_getUsersPage1
+TC02\_getUsersPage1
 Sayfa 1'deki kullanıcıları almak için yapılan GET isteği testidir. Yanıtın içinde "George" kullanıcısının yer aldığı doğrulanır.
 
 API Endpoint: /api/users?page=1
@@ -84,7 +72,7 @@ Yanıtın içeriğinde "George" kullanıcısı bulunmalıdır.
 
 Yanıt süresi 2000ms'den uzun olmamalıdır.
 
-TC03_getUserById
+TC03\_getUserById
 Belirli bir kullanıcıyı (ID: 2) almak için yapılan GET isteği testidir. Yanıtın status kodu ve içeriği doğrulanır.
 
 API Endpoint: /api/users/{id}
@@ -95,7 +83,7 @@ Kullanıcı bilgileri doğru olmalıdır.
 
 Yanıt süresi 2000ms'den uzun olmamalıdır.
 
-TC04_register
+TC04\_register
 Kullanıcı kayıt işlemi testidir. Geçerli bir e-posta ve şifre ile yapılan POST isteği sonucu doğrulama yapılır.
 
 API Endpoint: /api/register
@@ -106,7 +94,7 @@ Kayıt işlemi başarılı olmalı ve bir token döndürmelidir.
 
 Yanıt süresi 2000ms'den uzun olmamalıdır.
 
-TC05_successfulLogin
+TC05\_successfulLogin
 Başarılı giriş işlemi testidir. Doğru kullanıcı adı ve şifre ile yapılan POST isteği sonucu doğrulama yapılır.
 
 API Endpoint: /api/login
@@ -117,7 +105,7 @@ Başarılı giriş sonucu bir token döndürülmelidir.
 
 Yanıt süresi 2000ms'den uzun olmamalıdır.
 
-TC06_loginWithNoBody
+TC06\_loginWithNoBody
 Gövdesiz bir giriş isteği yapılır. Yanıtın 400 Bad Request olması beklenir.
 
 API Endpoint: /api/login
@@ -128,7 +116,7 @@ Gövdesiz istek yapıldığında doğru hata mesajı döndürülmelidir (Missing
 
 Yanıt süresi 2000ms'den uzun olmamalıdır.
 
-TC07_registerWithoutEmailOrPassword
+TC07\_registerWithoutEmailOrPassword
 Eksik bilgiyle (email veya password olmadan) yapılan kayıt isteği testidir. 400 Bad Request yanıtı alınması beklenir.
 
 API Endpoint: /api/register
@@ -139,7 +127,7 @@ Yanıt kodu 400 olmalıdır.
 
 Yanıt içinde "Missing password" mesajı yer almalıdır.
 
-TC08_loginWithInvalidEmail
+TC08\_loginWithInvalidEmail
 Geçersiz e-posta ile yapılan giriş isteği testidir. 400 Bad Request yanıtı alınması beklenir.
 
 API Endpoint: /api/login
@@ -150,7 +138,7 @@ Yanıt kodu 400 olmalıdır.
 
 Yanıt içinde "user not found" mesajı yer almalıdır.
 
-TC09_loginWithInvalidPassword
+TC09\_loginWithInvalidPassword
 Geçersiz şifreyle yapılan giriş isteği testidir. 401 Unauthorized yanıtı alınması beklenir.
 
 API Endpoint: /api/login
@@ -161,7 +149,7 @@ Yanıt kodu 401 olmalıdır.
 
 Yanıt içinde "Invalid credentials" mesajı yer almalıdır.
 
-TC10_createUser
+TC10\_createUser
 Yeni bir kullanıcı oluşturmak için yapılan POST isteği testidir. Oluşturulan kullanıcının bilgileri doğrulanır.
 
 API Endpoint: /api/users
@@ -172,7 +160,7 @@ Yanıt kodu 201 Created olmalıdır.
 
 Yanıt içeriğinde kullanıcı adı ve meslek bilgisi yer almalıdır.
 
-TC11_updateUser
+TC11\_updateUser
 Var olan bir kullanıcıyı güncellemek için yapılan PUT isteği testidir. Kullanıcı bilgileri güncellenir ve doğrulanır.
 
 API Endpoint: /api/users/{id}
@@ -183,7 +171,7 @@ Kullanıcı bilgileri başarılı şekilde güncellenmelidir.
 
 Yanıt süresi 2000ms'den uzun olmamalıdır.
 
-TC12_deleteUser
+TC12\_deleteUser
 Bir kullanıcıyı silmek için yapılan DELETE isteği testidir. Silme işlemi başarılı olmalıdır.
 
 API Endpoint: /api/users/{id}
@@ -192,31 +180,191 @@ Testler:
 
 Yanıt kodu 204 No Content olmalıdır.
 
-TC13_delayedResponse
+TC13\_delayedResponse
+Gecikmeli bir yanıt almak için yapılan GET isteği testidir. API'den 3 saniye gecikmeli bir yanıt alınması beklenir.
+
+API Endpoint: /api/users?delay=3
+# API Test Suite - Reqres API
+
+Bu proje, **Reqres API**'yi test etmek için yazılmış bir test senaryosu içermektedir. Testler, **RestAssured** ve **TestNG** kullanılarak gerçekleştirilmiştir.
+
+## İçindekiler
+
+1. [Kurulum](#kurulum)
+2. [Testler](#testler)
+    - [TC01_getAllUsers](#tc01_getallusers)
+    - [TC02_getUsersPage1](#tc02_getuserspage1)
+    - [TC03_getUserById](#tc03_getuserbyid)
+    - [TC04_register](#tc04_register)
+    - [TC05_successfulLogin](#tc05_successfullogin)
+    - [TC06_loginWithNoBody](#tc06_loginwithnobody)
+    - [TC07_registerWithoutEmailOrPassword](#tc07_registerwithoutemailorpassword)
+    - [TC08_loginWithInvalidEmail](#tc08_loginwithinvalidemail)
+    - [TC09_loginWithInvalidPassword](#tc09_loginwithinvalidpassword)
+    - [TC10_createUser](#tc10_createuser)
+    - [TC11_updateUser](#tc11_updateuser)
+    - [TC12_deleteUser](#tc12_deleteuser)
+    - [TC13_delayedResponse](#tc13_delayedresponse)
+3. [Kullanım](#kullanım)
+4. [Yapılabilecek Geliştirmeler](#yapılabilecek-geliştirmeler)
+
+## Kurulum
+
+Projeyi çalıştırmak için aşağıdaki adımları takip edebilirsiniz:
+
+1. **Git ile Projeyi Klonla**
+```bash
+   git clone https://github.com/your-repository/reqres-api-tests.git
+```
+
+2. **Maven ile Bağımlılıkları İndir**
+Proje için gerekli bağımlılıkları yüklemek için Maven kullanabilirsiniz:
+```bash
+mvn clean install
+```
+3. **TestNG ile Testleri Çalıştır**
+Testleri çalıştırmak için:
+```bash
+mvn test
+```
+Bu komut, TestNG'nin sağladığı testng.xml dosyası üzerinden tüm testleri çalıştıracaktır.
+
+# Testler #
+## TC01_getAllUsers ##
+Tüm kullanıcıları almak için yapılan GET isteği testidir. Bu test, tüm kullanıcı adlarını toplar ve George kullanıcısının var olup olmadığını doğrular.
+
+API Endpoint: /api/users?page={page}
+
+Testler:
+
+- Toplam yanıt süresi 2000ms'den uzun olmamalıdır.
+
+- Tüm kullanıcı adları arasında "George" bulunmalıdır.
+
+## TC02_getUsersPage1 ##
+Sayfa 1'deki kullanıcıları almak için yapılan GET isteği testidir. Yanıtın içinde "George" kullanıcısının yer aldığı doğrulanır.
+
+API Endpoint: /api/users?page=1
+
+Testler:
+
+- Yanıtın içeriğinde "George" kullanıcısı bulunmalıdır.
+
+- Yanıt süresi 2000ms'den uzun olmamalıdır.
+
+## TC03_getUserById ##
+Belirli bir kullanıcıyı (ID: 2) almak için yapılan GET isteği testidir. Yanıtın status kodu ve içeriği doğrulanır.
+
+API Endpoint: /api/users/{id}
+
+Testler:
+
+- Kullanıcı bilgileri doğru olmalıdır.
+
+- Yanıt süresi 2000ms'den uzun olmamalıdır.
+
+## TC04_register ##
+Kullanıcı kayıt işlemi testidir. Geçerli bir e-posta ve şifre ile yapılan POST isteği sonucu doğrulama yapılır.
+
+API Endpoint: /api/register
+
+Testler:
+
+- Kayıt işlemi başarılı olmalı ve bir token döndürmelidir.
+
+- Yanıt süresi 2000ms'den uzun olmamalıdır.
+
+## TC05_successfulLogin ##
+Başarılı giriş işlemi testidir. Doğru kullanıcı adı ve şifre ile yapılan POST isteği sonucu doğrulama yapılır.
+
+API Endpoint: /api/login
+
+Testler:
+
+- Başarılı giriş sonucu bir token döndürülmelidir.
+
+- Yanıt süresi 2000ms'den uzun olmamalıdır.
+
+## TC06_loginWithNoBody ##
+Gövdesiz bir giriş isteği yapılır. Yanıtın 400 Bad Request olması beklenir.
+
+API Endpoint: /api/login
+
+Testler:
+
+- Gövdesiz istek yapıldığında doğru hata mesajı döndürülmelidir (Missing email or username).
+
+- Yanıt süresi 2000ms'den uzun olmamalıdır.
+
+## TC07_registerWithoutEmailOrPassword ##
+Eksik bilgiyle (email veya password olmadan) yapılan kayıt isteği testidir. 400 Bad Request yanıtı alınması beklenir.
+
+API Endpoint: /api/register
+
+Testler:
+
+- Yanıt kodu 400 olmalıdır.
+
+- Yanıt içinde "Missing password" mesajı yer almalıdır.
+
+## TC08_loginWithInvalidEmail ##
+Geçersiz e-posta ile yapılan giriş isteği testidir. 400 Bad Request yanıtı alınması beklenir.
+
+API Endpoint: /api/login
+
+Testler:
+
+- Yanıt kodu 400 olmalıdır.
+
+- Yanıt içinde "user not found" mesajı yer almalıdır.
+
+## TC09_loginWithInvalidPassword ##
+Geçersiz şifreyle yapılan giriş isteği testidir. 401 Unauthorized yanıtı alınması beklenir.
+
+API Endpoint: /api/login
+
+Testler:
+
+- Yanıt kodu 401 olmalıdır.
+
+- Yanıt içinde "Invalid credentials" mesajı yer almalıdır.
+
+## TC10_createUser ##
+Yeni bir kullanıcı oluşturmak için yapılan POST isteği testidir. Oluşturulan kullanıcının bilgileri doğrulanır.
+
+API Endpoint: /api/users
+
+Testler:
+
+- Yanıt kodu 201 Created olmalıdır.
+
+- Yanıt içeriğinde kullanıcı adı ve meslek bilgisi yer almalıdır.
+
+## TC11_updateUser ##
+Var olan bir kullanıcıyı güncellemek için yapılan PUT isteği testidir. Kullanıcı bilgileri güncellenir ve doğrulanır.
+
+API Endpoint: /api/users/{id}
+
+Testler:
+
+- Kullanıcı bilgileri başarılı şekilde güncellenmelidir.
+
+- Yanıt süresi 2000ms'den uzun olmamalıdır.
+
+## TC12_deleteUser ##
+Bir kullanıcıyı silmek için yapılan DELETE isteği testidir. Silme işlemi başarılı olmalıdır.
+
+API Endpoint: /api/users/{id}
+
+Testler:
+
+- Yanıt kodu 204 No Content olmalıdır.
+
+## TC13_delayedResponse ##
 Gecikmeli bir yanıt almak için yapılan GET isteği testidir. API'den 3 saniye gecikmeli bir yanıt alınması beklenir.
 
 API Endpoint: /api/users?delay=3
 
 Testler:
 
-Yanıt kodu 200 OK olmalıdır.
-
-Kullanım
-Projeyi çalıştırmak için aşağıdaki adımları izleyebilirsiniz:
-
-Testleri Çalıştırma: Maven veya IDE (IntelliJ IDEA, Eclipse) üzerinden TestNG testlerini çalıştırabilirsiniz.
-
-bash
-Kopyala
-Düzenle
-mvn test
-Test Sonuçları: Testler tamamlandığında, konsolda her bir testin sonucu ve yanıt süreleri görüntülenir.
-
-Yapılabilecek Geliştirmeler
-Daha fazla test eklenebilir: API'nin tüm uç noktaları için daha fazla test yazılabilir.
-
-Veri doğrulama: Yanıt içeriklerinin daha detaylı bir şekilde doğrulanması sağlanabilir.
-
-Lisans
-Bu proje MIT lisansı ile lisanslanmıştır. Daha fazla bilgi için LICENSE dosyasına bakabilirsiniz.
-
+- Yanıt kodu 200 OK olmalıdır.
