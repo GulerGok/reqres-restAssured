@@ -29,7 +29,7 @@ Projeyi çalıştırmak için aşağıdaki adımları takip edebilirsiniz:
 
 1. **Git ile Projeyi Klonla**
 ```bash
-   git clone https://github.com/your-repository/reqres-api-tests.git
+   git clone https://github.com/GulerGok/reqres-restAssured.git
 ```
 
 2. **Maven ile Bağımlılıkları İndir**
