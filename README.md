@@ -17,7 +17,7 @@ Bu proje, **Reqres API**'yi test etmek için yazılmış bir test senaryosu içe
 
 Projeyi çalıştırmak için aşağıdaki adımları takip edebilirsiniz:
 
-1. **Projeyi çalıştırmak için:**
+**Projeyi çalıştırmak için:**
 ```bash
    git clone https://github.com/GulerGok/reqres-restAssured.git
    cd reqres-restAssured
