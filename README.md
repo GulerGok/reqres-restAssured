@@ -12,6 +12,7 @@ Bu proje, **Reqres API**'yi test etmek için yazılmış bir test senaryosu içe
 5. [Geliştirme Önerileri](#yapılabilecek-geliştirmeler)
 6. [Lisans](#lisans)
 
+---
 # 1. Kurulum
 
 Projeyi çalıştırmak için aşağıdaki adımları takip edebilirsiniz:
@@ -22,6 +23,8 @@ Projeyi çalıştırmak için aşağıdaki adımları takip edebilirsiniz:
    cd reqres-restAssured
    mvn clean install
 ```
+
+---
 # 2. Testler
 
 ## TC01_getAllUsers ##
@@ -163,14 +166,7 @@ Testler:
 
 - Yanıt kodu 200 OK olmalıdır.
 
-----
-3. **TestNG ile Testleri Çalıştır**
-Testleri çalıştırmak için:
-```bash
-mvn test
-```
-Bu komut, TestNG'nin sağladığı testng.xml dosyası üzerinden tüm testleri çalıştıracaktır.
-
+---
 # 3. Kullanım #
 Projeyi çalıştırmak için aşağıdaki adımları izleyebilirsiniz:
 
@@ -179,6 +175,7 @@ mvn test
 ```
 TestNG yapılandırması src/test/resources/testng.xml dosyasındadır.
 
+---
 # 4. Allure Raporu
 Testlerinizi çalıştırdıktan sonra Allure raporunu görmek için aşağıdaki adımları izleyebilirsiniz.
 
@@ -256,6 +253,7 @@ allure-results dizini, test sonuçlarını içerir ve Allure raporları bu dizin
 
 mvn allure:serve komutunu çalıştırarak, raporları yerel bir web sunucusunda görüntüleyebilirsiniz.
 
+---
 # 5. Yapılabilecek Geliştirmeler #
 Daha fazla test eklenebilir: API'nin tüm uç noktaları için daha fazla test yazılabilir.
 
@@ -267,5 +265,6 @@ Daha fazla test eklenebilir: API'nin tüm uç noktaları için daha fazla test y
 
 - Allure etiketlemeleri (@Severity, @Feature, @Story) ile daha anlamlı raporlar.
 
+---
 # 6. Lisans #
 Bu proje MIT lisansı ile lisanslanmıştır. Daha fazla bilgi için LICENSE dosyasına bakabilirsiniz.

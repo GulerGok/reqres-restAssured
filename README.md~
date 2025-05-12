@@ -12,7 +12,7 @@ Bu proje, **Reqres API**'yi test etmek için yazılmış bir test senaryosu içe
 5. [Geliştirme Önerileri](#yapılabilecek-geliştirmeler)
 6. [Lisans](#lisans)
 
-## 1. Kurulum
+# 1. Kurulum
 
 Projeyi çalıştırmak için aşağıdaki adımları takip edebilirsiniz:
 
@@ -22,14 +22,14 @@ Projeyi çalıştırmak için aşağıdaki adımları takip edebilirsiniz:
    cd reqres-restAssured
    mvn clean install
 ```
-## 2.Testler
+# 2. Testler
 
-
-# Testler #
 ## TC01_getAllUsers ##
 Tüm kullanıcıları almak için yapılan GET isteği testidir. Bu test, tüm kullanıcı adlarını toplar ve George kullanıcısının var olup olmadığını doğrular.
 
 API Endpoint: /api/users?page={page}
+
+Testler:
 
 - Toplam yanıt süresi 2000ms'den uzun olmamalıdır.
 
@@ -171,10 +171,7 @@ mvn test
 ```
 Bu komut, TestNG'nin sağladığı testng.xml dosyası üzerinden tüm testleri çalıştıracaktır.
 
-
-
-
-# 4.Kullanım #
+# 3. Kullanım #
 Projeyi çalıştırmak için aşağıdaki adımları izleyebilirsiniz:
 
 ```bash
@@ -182,7 +179,7 @@ mvn test
 ```
 TestNG yapılandırması src/test/resources/testng.xml dosyasındadır.
 
-# 4.Allure Raporu
+# 4. Allure Raporu
 Testlerinizi çalıştırdıktan sonra Allure raporunu görmek için aşağıdaki adımları izleyebilirsiniz.
 
 **Allure Raporunu Oluşturma:**
@@ -259,7 +256,7 @@ allure-results dizini, test sonuçlarını içerir ve Allure raporları bu dizin
 
 mvn allure:serve komutunu çalıştırarak, raporları yerel bir web sunucusunda görüntüleyebilirsiniz.
 
-### 5.Yapılabilecek Geliştirmeler #
+# 5. Yapılabilecek Geliştirmeler #
 Daha fazla test eklenebilir: API'nin tüm uç noktaları için daha fazla test yazılabilir.
 
 - Daha fazla uç nokta için kapsamlı testler eklenebilir.
@@ -270,5 +267,5 @@ Daha fazla test eklenebilir: API'nin tüm uç noktaları için daha fazla test y
 
 - Allure etiketlemeleri (@Severity, @Feature, @Story) ile daha anlamlı raporlar.
 
-# 6.Lisans #
+# 6. Lisans #
 Bu proje MIT lisansı ile lisanslanmıştır. Daha fazla bilgi için LICENSE dosyasına bakabilirsiniz.
