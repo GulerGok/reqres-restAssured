@@ -7,44 +7,23 @@ Bu proje, **Reqres API**'yi test etmek için yazılmış bir test senaryosu içe
 
 1. [Kurulum](#kurulum)
 2. [Testler](#testler)
-    - [TC01_getAllUsers](#tc01_getallusers)
-    - [TC02_getUsersPage1](#tc02_getuserspage1)
-    - [TC03_getUserById](#tc03_getuserbyid)
-    - [TC04_register](#tc04_register)
-    - [TC05_successfulLogin](#tc05_successfullogin)
-    - [TC06_loginWithNoBody](#tc06_loginwithnobody)
-    - [TC07_registerWithoutEmailOrPassword](#tc07_registerwithoutemailorpassword)
-    - [TC08_loginWithInvalidEmail](#tc08_loginwithinvalidemail)
-    - [TC09_loginWithInvalidPassword](#tc09_loginwithinvalidpassword)
-    - [TC10_createUser](#tc10_createuser)
-    - [TC11_updateUser](#tc11_updateuser)
-    - [TC12_deleteUser](#tc12_deleteuser)
-    - [TC13_delayedResponse](#tc13_delayedresponse)
 3. [Kullanım](#kullanım)
-4. [Yapılabilecek Geliştirmeler](#yapılabilecek-geliştirmeler)
+4. [Allure Raporları](#allure-raporları)
+5. [Geliştirme Önerileri](#yapılabilecek-geliştirmeler)
+6. [Lisans](#lisans)
 
-## Kurulum
+# 1. Kurulum
 
 Projeyi çalıştırmak için aşağıdaki adımları takip edebilirsiniz:
 
-1. **Git ile Projeyi Klonla**
+1. **Projeyi çalıştırmak için:**
 ```bash
    git clone https://github.com/GulerGok/reqres-restAssured.git
+   cd reqres-restAssured
+   mvn clean install
 ```
+# 2. Testler
 
-2. **Maven ile Bağımlılıkları İndir**
-Proje için gerekli bağımlılıkları yüklemek için Maven kullanabilirsiniz:
-```bash
-mvn clean install
-```
-3. **TestNG ile Testleri Çalıştır**
-Testleri çalıştırmak için:
-```bash
-mvn test
-```
-Bu komut, TestNG'nin sağladığı testng.xml dosyası üzerinden tüm testleri çalıştıracaktır.
-
-# Testler #
 ## TC01_getAllUsers ##
 Tüm kullanıcıları almak için yapılan GET isteği testidir. Bu test, tüm kullanıcı adlarını toplar ve George kullanıcısının var olup olmadığını doğrular.
 
@@ -184,21 +163,109 @@ Testler:
 
 - Yanıt kodu 200 OK olmalıdır.
 
+----
+3. **TestNG ile Testleri Çalıştır**
+Testleri çalıştırmak için:
+```bash
+mvn test
+```
+Bu komut, TestNG'nin sağladığı testng.xml dosyası üzerinden tüm testleri çalıştıracaktır.
 
-# Kullanım #
+# 3. Kullanım #
 Projeyi çalıştırmak için aşağıdaki adımları izleyebilirsiniz:
-
-**Testleri Çalıştırma:** Maven veya IDE (IntelliJ IDEA, Eclipse) üzerinden TestNG testlerini çalıştırabilirsiniz.
 
 ```bash
 mvn test
 ```
-**Test Sonuçları:** Testler tamamlandığında, konsolda her bir testin sonucu ve yanıt süreleri görüntülenir.
+TestNG yapılandırması src/test/resources/testng.xml dosyasındadır.
 
-# Yapılabilecek Geliştirmeler #
+# 4. Allure Raporu
+Testlerinizi çalıştırdıktan sonra Allure raporunu görmek için aşağıdaki adımları izleyebilirsiniz.
+
+**Allure Raporunu Oluşturma:**
+Test sonuçlarını topladıktan sonra Allure raporlarını oluşturmak için şu komutu kullanabilirsiniz:
+
+```bash
+mvn allure:report
+```
+**Allure Raporunu Sunma (Serve):**
+Oluşturduğunuz raporu sunmak ve görüntülemek için aşağıdaki komutu kullanabilirsiniz:
+
+```bash
+mvn allure:serve
+```
+Bu komut, test sonuçlarınızı görselleştiren bir web sunucusu başlatır.
+
+### Allure Raporu Kullanımı ###
+   Testler çalıştıktan sonra Allure ile oluşturulan test sonuçları allure-results klasörüne yazılır. Bu klasör genellikle proje ana dizininde oluşur.
+
+**Allure Raporunu Görüntülemek için:**
+
+```bash
+allure serve allure-results
+```
+Bu komut, geçici olarak bir web sunucusu başlatır ve varsayılan tarayıcınızda Allure test raporunu açar.
+
+### Not: 
+Eğer allure komutu tanınmıyor hatası alırsanız, Allure CLI aracını Allure Resmi Dokümantasyonu üzerinden sisteminize yüklemeniz gerekir.
+
+### Maven Konfigürasyonu (Allure)
+Raporda test sonuçlarını toplamak ve görselleştirmek için aşağıdaki pom.xml dosyasındaki konfigürasyonu kullanabilirsiniz:
+
+```xml
+<build>
+<plugins>
+<!-- Maven Surefire Plugin: Testlerinizi çalıştırmak için kullanılır -->
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-surefire-plugin</artifactId>
+<version>2.22.2</version>
+<configuration>
+<suiteXmlFiles>
+<suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+</suiteXmlFiles>
+</configuration>
+</plugin>
+
+        <!-- Allure Maven Plugin: Test sonuçlarını rapor halinde sunmak için kullanılır -->
+        <plugin>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-maven</artifactId>
+            <version>2.11.2</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>report</goal> <!-- Raporu oluşturacak -->
+                    </goals>
+                    <phase>verify</phase> <!-- Testlerin ardından çalışır -->
+                </execution>
+            </executions>
+            <configuration>
+                <!-- Test sonuçlarının bulunduğu dizini belirtin -->
+                <resultsDirectory>${project.basedir}/allure-results</resultsDirectory>
+                <!-- Oluşturulacak raporların dizini -->
+                <reportDirectory>${project.build.directory}/allure-report</reportDirectory>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+```
+
+### Not:
+allure-results dizini, test sonuçlarını içerir ve Allure raporları bu dizindeki verileri kullanarak raporları oluşturur. Bu dizin, ana proje dizininde veya target altında oluşturulabilir.
+
+mvn allure:serve komutunu çalıştırarak, raporları yerel bir web sunucusunda görüntüleyebilirsiniz.
+
+# 5. Yapılabilecek Geliştirmeler #
 Daha fazla test eklenebilir: API'nin tüm uç noktaları için daha fazla test yazılabilir.
 
-**Veri doğrulama:** Yanıt içeriklerinin daha detaylı bir şekilde doğrulanması sağlanabilir.
+- Daha fazla uç nokta için kapsamlı testler eklenebilir.
 
-# Lisans #
+- Yanıt verilerinde detaylı doğrulama (JSON schema, değer kontrolü).
+
+- CI/CD entegrasyonu ile otomatik test ve rapor oluşturma (GitHub Actions, Jenkins).
+
+- Allure etiketlemeleri (@Severity, @Feature, @Story) ile daha anlamlı raporlar.
+
+# 6. Lisans #
 Bu proje MIT lisansı ile lisanslanmıştır. Daha fazla bilgi için LICENSE dosyasına bakabilirsiniz.

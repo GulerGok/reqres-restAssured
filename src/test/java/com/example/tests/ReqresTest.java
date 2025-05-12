@@ -6,7 +6,6 @@ import io.restassured.response.Response;
 import org.testng.annotations.Test;
 import utils.TestUtil;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -169,7 +168,7 @@ public class ReqresTest extends ApiTests {
         TestUtil.checkPerformance(responseTime, 2000);
     }
 
-    @Test
+    @Test()
     public void TC07_registerWithoutEmailOrPassword() {
         String requestBody = "{\n" +
                 "  \"email\": \"eve.holt@reqres.in\"\n" +
