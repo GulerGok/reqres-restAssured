@@ -1,4 +1,8 @@
+# Sadece Java dosyalarını dil olarak dikkate al
 *.java linguist-detectable=true
-*.xml linguist-detectable=false
+
+# Diğer uzantıların analiz edilmesini engelle
 *.json linguist-detectable=false
+*.xml linguist-detectable=false
 *.md linguist-detectable=false
+*.yml linguist-detectable=false
